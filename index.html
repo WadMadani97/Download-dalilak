@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دليلك بود مدني — تحميل التطبيق</title>
+<meta name="description" content="حمّل تطبيق دليلك بود مدني: مطاعم، فنادق، أطباء، صيدليات ومستشفيات ودمدني في تطبيق واحد.">
+<meta name="theme-color" content="#0d4f4f">
+
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="دليلك بود مدني — تحميل التطبيق">
+<meta property="og:description" content="دليلك المحلي الشامل في ودمدني — كل خدماتك في مكان واحد.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  --nile:#0d4f4f;
+  --nile-dark:#082f2f;
+  --nile-tint:#e4f0ee;
+  --ochre:#c98a2b;
+  --ochre-dark:#a06e1f;
+  --brick:#a6402b;
+  --cream:#faf6ed;
+  --ink:#20302c;
+  --ink-soft:#4b5a55;
+  --line:#e4ddc9;
+  --card:#ffffff;
+  --shadow:0 6px 20px rgba(13,79,79,.08);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --cream:#0f1613;
+    --card:#17211d;
+    --ink:#eef2ee;
+    --ink-soft:#a9b7ae;
+    --line:#26332c;
+    --nile-tint:#132a27;
+    --shadow:0 6px 20px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --cream:#0f1613;
+  --card:#17211d;
+  --ink:#eef2ee;
+  --ink-soft:#a9b7ae;
+  --line:#26332c;
+  --nile-tint:#132a27;
+  --shadow:0 6px 20px rgba(0,0,0,.35);
+}
+
+html{scroll-padding-top: env(safe-area-inset-top, 0px);}
+html, body{height:100%}
+*{box-sizing:inherit}
+
+body{
+  margin:0;font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--ink);
+  line-height:1.75;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:'Lalezar',sans-serif;font-weight:400;letter-spacing:.5px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--ochre);color:#fff}
+
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+
+/* ============ header ============ */
+.site-header{
+  background:linear-gradient(160deg,var(--nile) 0%,var(--nile-dark) 100%);
+  color:#fff;
+  padding-top:calc(12px + env(safe-area-inset-top, 0px));
+  padding-bottom:12px;
+  position:sticky;top:0;z-index:50;
+  border:1.5px solid rgba(0,0,0,.4);border-radius:0 0 18px 18px;
+  box-shadow:0 4px 16px rgba(0,0,0,.18);
+}
+
+/* شعار الهيدر: قرص أبيض ناعم يحفظ وضوح الشعار على الخلفية الخضراء الداكنة */
+
+.header-content{text-align:center;padding:14px 0 15px}
+.header-content .display{font-size:clamp(20px,5vw,30px);line-height:1.25;font-weight:800;letter-spacing:.1px}
+.header-content .sub{font-size:clamp(12px,2.6vw,15px);opacity:.86;font-weight:500;margin-top:5px;line-height:1.5}
+/* ============ hero ============ */
+.hero{padding:30px 0 34px;text-align:center}
+
+h1{font-size:clamp(1.6rem,6vw,2.15rem);line-height:1.4;margin:0 0 22px;color:var(--ink)}
+
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--ochre);color:var(--nile-dark);font-family:inherit;font-weight:800;font-size:1.05rem;
+  padding:16px 36px;border-radius:30px;border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 8px 20px rgba(201,138,43,.35);transition:transform .25s ease,filter .25s ease,box-shadow .25s ease;
+}
+.cta-btn:hover{filter:brightness(1.08);transform:translateY(-3px) scale(1.03);box-shadow:0 12px 26px rgba(201,138,43,.48)}
+.cta-btn:focus-visible{outline:3px solid var(--nile);outline-offset:3px}
+.cta-meta{margin-top:12px;font-size:.8rem;color:var(--ink-soft)}
+
+/* ============ banner ============ */
+.banner-frame{
+  margin:0;position:relative;overflow:hidden;
+  border-radius:20px;border:1.5px solid var(--nile);
+  box-shadow:0 14px 34px rgba(13,79,79,.20);
+  background:var(--nile-tint);
+  aspect-ratio:1598/669;
+}
+.banner-frame img{width:100%;height:100%;object-fit:cover}
+.hero-banner{margin:0 auto 22px}
+.download-prompt{margin:0 0 22px;font-size:clamp(1.45rem,5.5vw,2rem);line-height:1.45}
+.banner-frame::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);
+}
+
+/* ============ sections ============ */
+section.block{padding:34px 0;border-top:1px solid var(--line)}
+h2{font-size:1.3rem;margin:0 0 14px}
+p{color:var(--ink-soft);margin:0 0 12px}
+
+/* ============ steps ============ */
+.steps{list-style:none;padding:0;margin:20px 0 0;counter-reset:step}
+.steps li{counter-increment:step;display:grid;grid-template-columns:34px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:none}
+.steps li::before{
+  content:counter(step);font-family:'Lalezar',sans-serif;font-size:1.05rem;color:#fff;
+  background:var(--nile);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.steps .step-text{padding-top:4px;color:var(--ink);font-weight:500}
+.steps .step-text b{font-weight:800;color:var(--ink)}
+
+/* ============ notice ============ */
+.notice{
+  margin-top:24px;background:var(--card);border:1.5px solid var(--line);
+  border-right:5px solid var(--brick);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);
+}
+.notice h3{font-family:'Tajawal',sans-serif;margin:0 0 8px;font-size:1rem;font-weight:800;color:var(--ink)}
+.notice p{color:var(--ink-soft);font-size:.9rem;font-weight:600;margin:0 0 8px}
+.notice p:last-child{margin-bottom:0}
+
+/* ============ footer ============ */
+footer{
+  padding:28px 0 calc(26px + env(safe-area-inset-bottom, 0px));
+  text-align:center;font-size:.8rem;color:var(--ink-soft);border-top:1px solid var(--line);
+}
+
+/* ============ motion ============ */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="wrap header-content">
+    <div class="display">دليلك الشامل بود مدني</div>
+    <div class="sub">أماكن وخدمات ود مدني في مكان واحد.</div>
+  </div>
+</div>
+<section class="hero">
+  <div class="wrap">
+<figure class="banner-frame hero-banner">
+    <img
+      src="img/banner.webp"
+      alt="دليلك المحلي الشامل في ود مدني: مطاعم، فنادق، أطباء، ومحلات وخدمات في تطبيق واحد"
+      width="1598" height="669" decoding="async" fetchpriority="high">
+  </figure>
+<h1 class="download-prompt">اضغط على زر تحميل الآن</h1>
+    <a class="cta-btn" href="https://github.com/WadMadani97/my-app/releases/download/v1.0/app-dalilak.WadMadani.apk" download>
+      📲 تحميل التطبيق الآن
+    </a>
+    <div class="cta-meta">ملف APK · لأجهزة أندرويد · نسخة 1.0</div>
+  </div>
+</section>
+
+<section class="block wrap">
+  <h2>خطوات التحميل والتثبيت</h2>
+  <ol class="steps">
+    <li><span class="step-text">اضغط على زر <b>"تحميل التطبيق الآن"</b> في أعلى الصفحة.</span></li>
+    <li><span class="step-text">سيبدأ تحميل ملف <b>APK</b> تلقائيًا على جهازك، وهيظهر إشعار بانتهاء التحميل.</span></li>
+    <li><span class="step-text">افتح الملف من الإشعار أو من مجلد التنزيلات (Downloads).</span></li>
+    <li><span class="step-text">هيظهر تنبيه من أندرويد يطلب السماح بالتثبيت من هذا المصدر — اضغط <b>"إعدادات"</b> ثم فعّل الخيار، وارجع لتكمل التثبيت.</span></li>
+    <li><span class="step-text">اضغط <b>"تثبيت"</b> وانتظر لحظات حتى يكتمل.</span></li>
+    <li><span class="step-text">افتح التطبيق من الشاشة الرئيسية وابدأ الاستخدام.</span></li>
+  </ol>
+
+  <div class="notice">
+    <h3>ليه بيظهر تحذير "مصدر غير معروف"؟</h3>
+    <p>التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
+    <p>يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  © 2026 دليلك بود مدني — جميع الحقوق محفوظة
+</footer>
+
+</body>
+</html>
