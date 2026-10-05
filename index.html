@@ -131,18 +131,21 @@ html{scroll-behavior:smooth}
   margin-top:18px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;
   padding:18px 20px;text-align:center;box-shadow:var(--shadow);
 }
-.support h3{font-family:'Tajawal',sans-serif;margin:0 0 4px;font-size:1.05rem;font-weight:800;color:var(--ink);letter-spacing:0}
+.support h3{font-family:'Tajawal',sans-serif;margin:0 0 4px;font-size:.92rem;font-weight:800;color:var(--ink);letter-spacing:0}
 .support p{margin:0 0 14px;font-size:.9rem;font-weight:600}
+.support .tip{
+  margin:0 0 14px;padding:10px 14px;background:var(--nile-tint);border:1px solid var(--line);
+  border-radius:10px;font-size:.88rem;font-weight:600;color:var(--ink);text-align:right;
+}
+.support .tip b{font-weight:800}
 .wa-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:#128c7e;color:#fff;font-family:inherit;font-weight:800;font-size:.98rem;
-  padding:12px 26px;border-radius:26px;box-shadow:0 6px 16px rgba(18,140,126,.30);
+  background:#128c7e;color:#fff;font-family:inherit;font-weight:800;font-size:.85rem;
+  padding:8px 20px;border-radius:22px;box-shadow:0 4px 12px rgba(18,140,126,.28);
   transition:transform .2s ease,filter .2s ease;
 }
 .wa-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
 .wa-btn:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
-.support .wa-num{margin:10px 0 0;font-size:.82rem;font-weight:500;color:var(--ink-soft)}
-.support .wa-num bdi{font-weight:800;letter-spacing:.5px;color:var(--ink)}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .platform-note{color:#7cc7bd}
 }
@@ -305,9 +308,9 @@ footer .rights{font-weight:500;color:rgba(255,255,255,.88)}
 
   <div class="support">
     <h3>تواجهك مشكلة في التحميل أو التثبيت؟</h3>
-    <p>تواصل معنا عبر واتساب وسنساعدك.</p>
+    <p class="tip">💡 <b>إذا توقف التحميل عند اكتمال الحجم:</b> حدّث متصفح Chrome من متجر Play ثم أعد المحاولة.</p>
+    <p>وإن استمرت المشكلة، تواصل معنا عبر واتساب وسنساعدك.</p>
     <a class="wa-btn" href="https://wa.me/249127985731?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D9%85%D9%8A%D9%84/%D8%AA%D8%AB%D8%A8%D9%8A%D8%AA%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83%20%D8%A8%D9%88%D8%AF%20%D9%85%D8%AF%D9%86%D9%8A" target="_blank" rel="noopener">💬 تواصل عبر واتساب</a>
-    <p class="wa-num">أو راسلنا على الرقم: <bdi dir="ltr">0127985731</bdi></p>
   </div>
 </section>
 
