@@ -111,6 +111,43 @@ h1{font-size:clamp(1.6rem,6vw,2.15rem);line-height:1.4;margin:0 0 22px;color:var
 .cta-btn:focus-visible{outline:3px solid var(--nile);outline-offset:3px}
 .cta-meta{margin-top:12px;font-size:.8rem;color:var(--ink-soft)}
 
+.cta-hint{margin-top:10px;font-size:.85rem;color:var(--ink-soft)}
+.cta-hint a{color:var(--brick);font-weight:800;border-bottom:1.5px dashed currentColor;padding-bottom:1px;white-space:nowrap}
+.cta-hint a:focus-visible{outline:3px solid var(--nile);outline-offset:3px;border-radius:4px}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .cta-hint a{color:#e98a76}
+}
+:root[data-theme="dark"] .cta-hint a{color:#e98a76}
+html{scroll-behavior:smooth}
+#important-note{scroll-margin-top:calc(110px + env(safe-area-inset-top, 0px))}
+
+/* ============ android note + support ============ */
+.platform-note{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 14px;
+  background:var(--nile-tint);color:var(--nile);border:1px solid var(--line);border-radius:20px;
+  font-size:.82rem;font-weight:800;
+}
+.support{
+  margin-top:18px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;
+  padding:18px 20px;text-align:center;box-shadow:var(--shadow);
+}
+.support h3{font-family:'Tajawal',sans-serif;margin:0 0 4px;font-size:1.05rem;font-weight:800;color:var(--ink);letter-spacing:0}
+.support p{margin:0 0 14px;font-size:.9rem;font-weight:600}
+.wa-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:#128c7e;color:#fff;font-family:inherit;font-weight:800;font-size:.98rem;
+  padding:12px 26px;border-radius:26px;box-shadow:0 6px 16px rgba(18,140,126,.30);
+  transition:transform .2s ease,filter .2s ease;
+}
+.wa-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.wa-btn:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.support .wa-num{margin:10px 0 0;font-size:.82rem;font-weight:500;color:var(--ink-soft)}
+.support .wa-num bdi{font-weight:800;letter-spacing:.5px;color:var(--ink)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .platform-note{color:#7cc7bd}
+}
+:root[data-theme="dark"] .platform-note{color:#7cc7bd}
+
 /* ============ banner ============ */
 .banner-frame{
   margin:0;position:relative;overflow:hidden;
@@ -132,6 +169,27 @@ section.block{padding:34px 0;border-top:1px solid var(--line)}
 h2{font-size:1.3rem;margin:0 0 14px}
 p{color:var(--ink-soft);margin:0 0 12px}
 
+/* ============ section title ============ */
+.section-title{text-align:center;margin:0 0 6px}
+.section-title h2{
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;margin:0;
+  font-family:'Tajawal',sans-serif;font-weight:800;font-size:clamp(1.45rem,5.6vw,1.9rem);
+  line-height:1.4;color:var(--nile);letter-spacing:0;
+}
+.section-title h2::before,.section-title h2::after{
+  content:'';flex:0 0 auto;width:clamp(22px,9vw,52px);height:2px;border-radius:2px;
+}
+.section-title h2::before{background:linear-gradient(to left,var(--ochre),transparent)}
+.section-title h2::after{background:linear-gradient(to right,var(--ochre),transparent)}
+.section-title .title-bar{
+  display:block;width:56px;height:4px;margin:6px auto 0;border-radius:4px;
+  background:linear-gradient(90deg,var(--ochre-dark),var(--ochre));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .section-title h2{color:#7cc7bd}
+}
+:root[data-theme="dark"] .section-title h2{color:#7cc7bd}
+
 /* ============ steps ============ */
 .steps{list-style:none;padding:0;margin:20px 0 0;counter-reset:step}
 .steps li{counter-increment:step;display:grid;grid-template-columns:34px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
@@ -145,22 +203,49 @@ p{color:var(--ink-soft);margin:0 0 12px}
 
 /* ============ notice ============ */
 .notice{
-  margin-top:24px;background:var(--card);border:1.5px solid var(--line);
-  border-right:5px solid var(--brick);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);
+  margin-top:26px;background:var(--card);border:1.5px solid var(--line);
+  border-right:5px solid var(--brick);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;
 }
-.notice h3{font-family:'Tajawal',sans-serif;margin:0 0 8px;font-size:1rem;font-weight:800;color:var(--ink)}
-.notice p{color:var(--ink-soft);font-size:.9rem;font-weight:600;margin:0 0 8px}
-.notice p:last-child{margin-bottom:0}
+.notice-head{
+  display:flex;align-items:center;gap:10px;padding:13px 20px;
+  background:rgba(166,64,43,.08);border-bottom:1px solid var(--line);
+}
+.notice-icon{
+  width:28px;height:28px;border-radius:50%;background:var(--brick);color:#fff;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.notice-icon svg{width:16px;height:16px}
+.notice-head h3{
+  font-family:'Tajawal',sans-serif;margin:0;font-size:1.1rem;font-weight:800;
+  color:var(--brick);letter-spacing:0;
+}
+.notice-body{padding:16px 20px 18px}
+.notice-lead{margin:0 0 10px;font-size:.95rem;font-weight:800;color:var(--ink)}
+.notice-body p{color:var(--ink-soft);font-size:.9rem;font-weight:600;margin:0 0 8px}
+.notice-body p:last-child{margin-bottom:0}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .notice-head h3{color:#e98a76}
+  :root:not([data-theme="light"]) .notice-head{background:rgba(233,138,118,.10)}
+}
+:root[data-theme="dark"] .notice-head h3{color:#e98a76}
+:root[data-theme="dark"] .notice-head{background:rgba(233,138,118,.10)}
 
 /* ============ footer ============ */
 footer{
-  padding:28px 0 calc(26px + env(safe-area-inset-bottom, 0px));
-  text-align:center;font-size:.8rem;color:var(--ink-soft);border-top:1px solid var(--line);
+  margin-top:14px;
+  background:linear-gradient(160deg,var(--nile) 0%,var(--nile-dark) 100%);
+  color:#fff;text-align:center;
+  border-radius:14px 14px 0 0;border-top:2px solid var(--ochre);
+  padding:12px 0 calc(12px + env(safe-area-inset-bottom, 0px));
 }
+footer p{margin:0;font-size:clamp(.7rem,3.2vw,.85rem);font-weight:700;color:#fff;letter-spacing:0;line-height:1.6}
+footer .sep{margin:0 6px;color:var(--ochre);font-weight:400}
+footer .rights{font-weight:500;color:rgba(255,255,255,.88)}
 
 /* ============ motion ============ */
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
@@ -185,11 +270,16 @@ footer{
       📲 تحميل التطبيق الآن
     </a>
     <div class="cta-meta">ملف APK · لأجهزة أندرويد · نسخة 1.0 · الحجم: 8 ميجابايت</div>
+    <div class="platform-note">🤖 التطبيق متاح حاليًا لأجهزة أندرويد فقط</div>
+    <div class="cta-hint">قد يظهر تنبيه أثناء التثبيت — <a href="#important-note">اعرف السبب ↓</a></div>
   </div>
 </section>
 
 <section class="block wrap">
-  <h2>خطوات التحميل والتثبيت</h2>
+  <div class="section-title">
+    <h2>خطوات التحميل والتثبيت</h2>
+    <span class="title-bar" aria-hidden="true"></span>
+  </div>
   <ol class="steps">
     <li><span class="step-text">اضغط على زر <b>"تحميل التطبيق الآن"</b> في أعلى الصفحة.</span></li>
     <li><span class="step-text">سيبدأ تحميل ملف <b>APK</b> تلقائيًا على جهازك، وهيظهر إشعار بانتهاء التحميل.</span></li>
@@ -199,15 +289,32 @@ footer{
     <li><span class="step-text">افتح التطبيق من الشاشة الرئيسية وابدأ الاستخدام.</span></li>
   </ol>
 
-  <div class="notice">
-    <h3>ليه بيظهر تحذير "مصدر غير معروف"؟</h3>
-    <p>التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
-    <p>يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
+  <div class="notice" role="note" id="important-note">
+    <div class="notice-head">
+      <span class="notice-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="8" x2="12" y2="8.01"/><path d="M12 12v5"/></svg>
+      </span>
+      <h3>ملاحظة هامة</h3>
+    </div>
+    <div class="notice-body">
+      <p class="notice-lead">ليه بيظهر تحذير "مصدر غير معروف"؟</p>
+      <p>التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
+      <p>يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
+    </div>
+  </div>
+
+  <div class="support">
+    <h3>تواجهك مشكلة في التحميل أو التثبيت؟</h3>
+    <p>تواصل معنا عبر واتساب وسنساعدك.</p>
+    <a class="wa-btn" href="https://wa.me/249127985731?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D9%85%D9%8A%D9%84/%D8%AA%D8%AB%D8%A8%D9%8A%D8%AA%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83%20%D8%A8%D9%88%D8%AF%20%D9%85%D8%AF%D9%86%D9%8A" target="_blank" rel="noopener">💬 تواصل عبر واتساب</a>
+    <p class="wa-num">أو راسلنا على الرقم: <bdi dir="ltr">0127985731</bdi></p>
   </div>
 </section>
 
-<footer class="wrap">
-  © 2026 دليلك بود مدني — جميع الحقوق محفوظة
+<footer>
+  <div class="wrap">
+    <p>© 2026 دليلك بود مدني<span class="sep">•</span><span class="rights">جميع الحقوق محفوظة</span></p>
+  </div>
 </footer>
 
 </body>
