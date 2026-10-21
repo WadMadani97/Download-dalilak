@@ -142,6 +142,44 @@ html{scroll-behavior:smooth}
 .wa-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
 .wa-btn:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
 
+.support .support-lead{margin:0 0 16px;font-size:.9rem;font-weight:600;color:var(--ink-soft);line-height:1.8}
+.support .support-lead b{display:block;font-size:1.1rem;font-weight:800;color:var(--nile);margin-bottom:2px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .support .support-lead b{color:#7cc7bd}}
+:root[data-theme="dark"] .support .support-lead b{color:#7cc7bd}
+.wa-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wa-opt{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  padding:14px 8px 12px;border-radius:14px;
+  background:linear-gradient(160deg,var(--nile) 0%,var(--nile-dark) 100%);
+  border:1px solid rgba(255,255,255,.18);border-bottom:3px solid var(--ochre);
+  color:#fff;font-family:inherit;font-weight:800;font-size:.84rem;line-height:1.4;cursor:pointer;
+  box-shadow:0 6px 14px rgba(13,79,79,.30);
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+}
+.wa-opt .ico{
+  width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;
+}
+.wa-opt .go{font-size:.72rem;font-weight:700;color:var(--ochre);letter-spacing:0}
+.wa-opt:hover{filter:brightness(1.12);transform:translateY(-3px);box-shadow:0 10px 20px rgba(13,79,79,.38)}
+.wa-opt:active{transform:translateY(0);box-shadow:0 3px 8px rgba(13,79,79,.3)}
+.wa-opt:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.wa-via{margin:12px 0 0;font-size:.78rem;font-weight:600;color:var(--ink-soft)}
+.wa-or{display:flex;align-items:center;gap:12px;margin:16px 0 14px;color:var(--ink-soft);font-size:.8rem;font-weight:700}
+.wa-or::before,.wa-or::after{content:'';flex:1;height:1px;background:var(--line)}
+.wa-direct{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  background:linear-gradient(160deg,#25b866 0%,#128c7e 100%);color:#fff;font-family:inherit;font-weight:800;font-size:.98rem;
+  padding:13px 20px;border-radius:14px;border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 8px 18px rgba(18,140,126,.35);
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+}
+.wa-direct svg{width:24px;height:24px;flex-shrink:0}
+.wa-direct:hover{filter:brightness(1.08);transform:translateY(-3px);box-shadow:0 12px 24px rgba(18,140,126,.45)}
+.wa-direct:active{transform:translateY(0)}
+.wa-direct:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+@media (max-width:340px){.wa-choices{grid-template-columns:1fr}}
+
 /* ============ arrows ============ */
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .arrows{display:flex;flex-direction:column;align-items:center;margin:0 0 12px;line-height:0}
@@ -243,6 +281,23 @@ p{color:var(--ink-soft);margin:0 0 12px}
 :root[data-theme="dark"] .notice-head h3{color:#e98a76}
 :root[data-theme="dark"] .notice-head{background:rgba(233,138,118,.10)}
 
+.notice-safe{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.notice-safe .notice-lead{color:#1f7a5a}
+.safe-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.safe-list li{
+  display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:10px;
+  background:var(--nile-tint);border:1px solid var(--line);color:var(--ink);font-size:.88rem;font-weight:600;line-height:1.6;
+}
+.safe-list li::before{
+  content:'✓';flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#1f7a5a;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;margin-top:1px;
+}
+.safe-list li b{font-weight:800}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .notice-safe .notice-lead{color:#6fd1ab}
+}
+:root[data-theme="dark"] .notice-safe .notice-lead{color:#6fd1ab}
+
 /* ============ footer ============ */
 footer{
   margin-top:14px;
@@ -313,14 +368,29 @@ footer .rights{font-weight:500;color:rgba(255,255,255,.88)}
       <p class="notice-lead">ليه بيظهر تحذير "مصدر غير معروف"؟</p>
       <p>التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
       <p>يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
+      <div class="notice-safe">
+        <p class="notice-lead">🛡️ اطمئن، التطبيق بسيط وآمن</p>
+        <ul class="safe-list">
+          <li><span><b>بدون تسجيل دخول:</b> لا يطلب منك إنشاء حساب أو إدخال أي بيانات شخصية.</span></li>
+          <li><span><b>دليل للعرض فقط:</b> يعرض لك معلومات وخدمات مدينة ود مدني، ولا شيء غير ذلك.</span></li>
+          <li><span><b>لا يضر بجهازك:</b> لا يسبب أي مشكلة لهاتفك ولا يعرّضك لأي خطر.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <div class="support">
-    <h3>تواجهك مشكلة في التحميل أو التثبيت؟</h3>
-    <p class="tip">💡 <b>إذا توقف التحميل عند اكتمال الحجم:</b> حدّث متصفح Chrome من متجر Play ثم أعد المحاولة.</p>
-    <p>وإن استمرت المشكلة، تواصل معنا عبر واتساب وسنساعدك.</p>
-    <a class="wa-btn" href="https://wa.me/249127985731?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%AA%D8%AD%D9%85%D9%8A%D9%84/%D8%AA%D8%AB%D8%A8%D9%8A%D8%AA%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83%20%D8%A8%D9%88%D8%AF%20%D9%85%D8%AF%D9%86%D9%8A" target="_blank" rel="noopener">💬 تواصل عبر واتساب</a>
+    <p class="support-lead"><b>فريق الدعم في خدمتك</b><br>لأي مشكلة في التحميل أو التثبيت، أو استفسار، أو اقتراح — اختر سبب تواصلك وسنرد عليك في أقرب وقت.</p>
+    <div class="wa-choices">
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، أواجه مشكلة في تحميل/تثبيت تطبيق دليلك بود مدني وأحتاج مساعدة." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🛠️</span><span>مشكلة في التحميل أو التثبيت</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، لدي استفسار عن تطبيق دليلك بود مدني." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">❓</span><span>استفسار عن التطبيق</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، لدي اقتراح/ملاحظة لتطوير تطبيق دليلك بود مدني." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">💡</span><span>اقتراح أو ملاحظة</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، أودّ معرفة المزيد عن تطبيق دليلك بود مدني وما الذي يقدمه." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">📍</span><span>ما هو تطبيق دليلك؟</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
+    </div>
+    <p class="wa-via">💬 سيفتح واتساب برسالة جاهزة، وتقدر تعدّلها قبل الإرسال.</p>
+    <div class="wa-or"><span>أو</span></div>
+    <a class="wa-direct" href="https://wa.me/249127985731" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true" fill="#fff"><path d="M16.02 3C9.4 3 4.04 8.36 4.04 14.97c0 2.11.55 4.17 1.6 5.99L4 28l7.2-1.89a11.9 11.9 0 0 0 4.82 1.01h.01c6.61 0 11.97-5.36 11.97-11.97C28 8.36 22.63 3 16.02 3zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.27 1.12 1.14-4.16-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.97 9.98-9.97 5.5 0 9.97 4.47 9.97 9.97s-4.47 9.97-9.65 9.97zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span>تواصل مباشرة عبر واتساب</span></a>
+    <script>document.querySelectorAll(".wa-opt").forEach(function(a){a.href="https://wa.me/249127985731?text="+encodeURIComponent(a.getAttribute("data-msg"))});</script>
   </div>
 </section>
 
