@@ -504,6 +504,25 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
 .chat-input{font-size:1rem}
 @media (min-width:768px){.msg{font-size:1rem;max-width:80%}}
 
+/* زر الترجمة + دعم الاتجاه الإنجليزي */
+.lang-btn{
+  position:absolute;top:calc(8px + env(safe-area-inset-top,0px));inset-inline-end:12px;z-index:2;
+  display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:18px;cursor:pointer;
+  background:rgba(255,255,255,.14);color:#fff;border:1.5px solid var(--ochre);
+  font-family:'Tajawal',sans-serif;font-weight:800;font-size:.8rem;line-height:1;
+  transition:background .2s ease,transform .2s ease;
+}
+.lang-btn:hover{background:rgba(255,255,255,.24);transform:translateY(-1px)}
+.lang-btn:focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+.header-content{padding-top:30px}
+@media (min-width:768px){.header-content{padding-top:14px}}
+[dir="ltr"] .notice{border-right:1.5px solid var(--line);border-left:5px solid var(--brick)}
+[dir="ltr"] .msg.bot{border-bottom-right-radius:14px;border-bottom-left-radius:4px}
+[dir="ltr"] .msg.user{border-bottom-left-radius:14px;border-bottom-right-radius:4px}
+[lang="en"] .header-content .display{font-family:'Tajawal',sans-serif;font-weight:800}
+[lang="en"] body{line-height:1.7}
+[dir="ltr"] .fb-fab,[dir="ltr"] .wa-fab,[dir="ltr"] .chat-fab{left:auto;right:16px}
+
 /* ============ motion ============ */
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
@@ -514,9 +533,10 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
 <body>
 
 <div class="site-header">
+  <button class="lang-btn" id="langBtn" type="button" aria-label="Translate the page to English"><span aria-hidden="true">🌐</span><span id="langTxt">English</span></button>
   <div class="wrap header-content">
-    <div class="display">دليلك الشامل بود مدني</div>
-    <div class="sub">أماكن وخدمات ود مدني في مكان واحد.</div>
+    <div class="display" data-i18n="hdr">دليلك الشامل بود مدني</div>
+    <div class="sub" data-i18n="hdrsub">أماكن وخدمات ود مدني في مكان واحد.</div>
   </div>
 </div>
 <section class="hero">
@@ -524,31 +544,31 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
 <figure class="banner-frame hero-banner">
     <img
       src="img/banner.webp"
-      alt="دليلك المحلي الشامل في ود مدني: مطاعم، فنادق، أطباء، ومحلات وخدمات في تطبيق واحد"
+      data-i18n-alt="banner" alt="دليلك المحلي الشامل في ود مدني: مطاعم، فنادق، أطباء، ومحلات وخدمات في تطبيق واحد"
       width="1598" height="669" decoding="async" fetchpriority="high">
   </figure>
-<h1 class="sr-only">اضغط على زر تحميل الآن</h1>
+<h1 class="sr-only" data-i18n="h1">اضغط على زر تحميل الآن</h1>
     <div class="arrows" aria-hidden="true"><svg viewBox="0 0 38 22" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 12L33 5"/></svg><svg viewBox="0 0 38 22" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 12L33 5"/></svg><svg viewBox="0 0 38 22" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l14 12L33 5"/></svg></div>
-    <a class="cta-btn" href="https://github.com/WadMadani97/Download-dalilak/releases/download/v1.0/app-dalilak.WadMadani.apk" download>
+    <a class="cta-btn" data-i18n="cta" href="https://github.com/WadMadani97/Download-dalilak/releases/download/v1.0/app-dalilak.WadMadani.apk" download>
       📲 تحميل التطبيق الآن
     </a>
-    <div class="cta-meta">ملف APK · لأجهزة أندرويد · نسخة 1.0 · الحجم: 8 ميجابايت</div>
-    <div class="cta-hint">قد يظهر تنبيه أثناء التثبيت — <a href="#important-note">اعرف السبب ↓</a></div>
+    <div class="cta-meta" data-i18n="meta">ملف APK · لأجهزة أندرويد · نسخة 1.0 · الحجم: 8 ميجابايت</div>
+    <div class="cta-hint"><span data-i18n="hint1">قد يظهر تنبيه أثناء التثبيت — </span><a href="#important-note" data-i18n="hint2">اعرف السبب ↓</a></div>
   </div>
 </section>
 
 <section class="block wrap">
   <div class="section-title">
-    <h2>خطوات التحميل والتثبيت</h2>
+    <h2 data-i18n="stepsTitle">خطوات التحميل والتثبيت</h2>
     <span class="title-bar" aria-hidden="true"></span>
   </div>
   <ol class="steps">
-    <li><span class="step-text">اضغط على زر <b>"تحميل التطبيق الآن"</b> في أعلى الصفحة.</span></li>
-    <li><span class="step-text">سيبدأ تحميل ملف <b>APK</b> تلقائيًا على جهازك، وهيظهر إشعار بانتهاء التحميل.</span></li>
-    <li><span class="step-text">افتح الملف من الإشعار أو من مجلد التنزيلات (Downloads).</span></li>
-    <li><span class="step-text">هيظهر تنبيه من أندرويد يطلب السماح بالتثبيت من هذا المصدر — اضغط <b>"إعدادات"</b> ثم فعّل الخيار، وارجع لتكمل التثبيت.</span></li>
-    <li><span class="step-text">اضغط <b>"تثبيت"</b> وانتظر لحظات حتى يكتمل.</span></li>
-    <li><span class="step-text">افتح التطبيق من الشاشة الرئيسية وابدأ الاستخدام.</span></li>
+    <li><span class="step-text" data-i18n="s1">اضغط على زر <b>"تحميل التطبيق الآن"</b> في أعلى الصفحة.</span></li>
+    <li><span class="step-text" data-i18n="s2">سيبدأ تحميل ملف <b>APK</b> تلقائيًا على جهازك، وهيظهر إشعار بانتهاء التحميل.</span></li>
+    <li><span class="step-text" data-i18n="s3">افتح الملف من الإشعار أو من مجلد التنزيلات (Downloads).</span></li>
+    <li><span class="step-text" data-i18n="s4">هيظهر تنبيه من أندرويد يطلب السماح بالتثبيت من هذا المصدر — اضغط <b>"إعدادات"</b> ثم فعّل الخيار، وارجع لتكمل التثبيت.</span></li>
+    <li><span class="step-text" data-i18n="s5">اضغط <b>"تثبيت"</b> وانتظر لحظات حتى يكتمل.</span></li>
+    <li><span class="step-text" data-i18n="s6">افتح التطبيق من الشاشة الرئيسية وابدأ الاستخدام.</span></li>
   </ol>
 
   <div class="notice" role="note" id="important-note">
@@ -556,35 +576,35 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
       <span class="notice-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="8" x2="12" y2="8.01"/><path d="M12 12v5"/></svg>
       </span>
-      <h3>ملاحظة هامة</h3>
-      <button class="notice-close" type="button" aria-label="إغلاق الملاحظة">✕</button>
+      <h3 data-i18n="nTitle">ملاحظة هامة</h3>
+      <button class="notice-close" type="button" data-i18n-aria="noteClose" aria-label="إغلاق الملاحظة">✕</button>
     </div>
     <div class="notice-body">
-      <p class="notice-lead">ليه بيظهر تحذير "مصدر غير معروف"؟</p>
-      <p>التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
-      <p>يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
+      <p class="notice-lead" data-i18n="nLead">ليه بيظهر تحذير "مصدر غير معروف"؟</p>
+      <p data-i18n="nP1">التطبيق حاليًا غير منشور على متجر Google Play، ولذلك نظام أندرويد يعرض هذا التنبيه تلقائيًا مع أي تطبيق يُثبَّت من خارج المتجر الرسمي — وده إجراء افتراضي من النظام نفسه، وليس مؤشرًا على وجود مشكلة في التطبيق.</p>
+      <p data-i18n="nP2">يكفي إنك توافق على السماح بالتثبيت من هذا المصدر عند ظهور التنبيه، وبعدها يكتمل التثبيت بشكل طبيعي.</p>
       <div class="notice-safe">
-        <p class="notice-lead">🛡️ اطمئن، التطبيق بسيط وآمن</p>
+        <p class="notice-lead" data-i18n="sLead">🛡️ اطمئن، التطبيق بسيط وآمن</p>
         <ul class="safe-list">
-          <li><span><b>بدون تسجيل دخول:</b> لا يطلب منك إنشاء حساب أو إدخال أي بيانات شخصية.</span></li>
-          <li><span><b>دليل للعرض فقط:</b> يعرض لك معلومات وخدمات مدينة ود مدني، ولا شيء غير ذلك.</span></li>
-          <li><span><b>لا يضر بجهازك:</b> لا يسبب أي مشكلة لهاتفك ولا يعرّضك لأي خطر.</span></li>
+          <li><span data-i18n="sf1"><b>بدون تسجيل دخول:</b> لا يطلب منك إنشاء حساب أو إدخال أي بيانات شخصية.</span></li>
+          <li><span data-i18n="sf2"><b>دليل للعرض فقط:</b> يعرض لك معلومات وخدمات مدينة ود مدني، ولا شيء غير ذلك.</span></li>
+          <li><span data-i18n="sf3"><b>لا يضر بجهازك:</b> لا يسبب أي مشكلة لهاتفك ولا يعرّضك لأي خطر.</span></li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="support">
-    <p class="support-lead"><b>فريق الدعم في خدمتك</b><br>إذا واجهتك أي مشكلة في التحميل أو التثبيت، أو لديك اقتراح بخصوص التطبيق، اضغط على الزر وسنرد عليك في أقرب وقت.</p>
+    <p class="support-lead" data-i18n="supLead"><b>فريق الدعم في خدمتك</b><br>إذا واجهتك أي مشكلة في التحميل أو التثبيت، أو لديك اقتراح بخصوص التطبيق، اضغط على الزر وسنرد عليك في أقرب وقت.</p>
     <div class="wa-choices">
-      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، أواجه مشكلة في تحميل/تثبيت تطبيق دليلك بود مدني وأحتاج مساعدة." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🛠️</span><span>مشكلة في التحميل أو التثبيت</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
-      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، لدي اقتراح/ملاحظة لتطوير تطبيق دليلك بود مدني." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">💡</span><span>اقتراح أو ملاحظة</span><span class="go" aria-hidden="true">اضغط هنا ◂</span></a>
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، أواجه مشكلة في تحميل/تثبيت تطبيق دليلك بود مدني وأحتاج مساعدة." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🛠️</span><span data-i18n="o1">مشكلة في التحميل أو التثبيت</span><span class="go" data-i18n="go" aria-hidden="true">اضغط هنا ◂</span></a>
+      <a class="wa-opt" href="https://wa.me/249127985731" data-msg="مرحبًا، لدي اقتراح/ملاحظة لتطوير تطبيق دليلك بود مدني." target="_blank" rel="noopener"><span class="ico" aria-hidden="true">💡</span><span data-i18n="o2">اقتراح أو ملاحظة</span><span class="go" data-i18n="go" aria-hidden="true">اضغط هنا ◂</span></a>
     </div>
-    <div class="wa-or"><span>أو تواصل معنا مباشرة</span></div>
+    <div class="wa-or"><span data-i18n="or">أو تواصل معنا مباشرة</span></div>
     <div class="social-row">
-      <a class="soc soc-fb" href="https://www.facebook.com/AlgaziraMadani" target="_blank" rel="noopener" aria-label="تابعنا على فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg><span class="badge">تابعنا</span></a>
-      <a class="soc soc-wa" href="https://wa.me/249127985731" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" aria-hidden="true" fill="#fff"><path d="M16.02 3C9.4 3 4.04 8.36 4.04 14.97c0 2.11.55 4.17 1.6 5.99L4 28l7.2-1.89a11.9 11.9 0 0 0 4.82 1.01h.01c6.61 0 11.97-5.36 11.97-11.97C28 8.36 22.63 3 16.02 3zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.27 1.12 1.14-4.16-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.97 9.98-9.97 5.5 0 9.97 4.47 9.97 9.97s-4.47 9.97-9.65 9.97zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span class="badge">تواصل</span></a>
-      <button class="soc soc-ai" id="socAi" type="button" aria-label="اسأل مساعد دليلك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3z"/><path d="M18 14l.95 2.55L21.5 17.5l-2.55.95L18 21l-.95-2.55-2.55-.95 2.55-.95L18 14z"/><path d="M18.5 3l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6.6-1.6z"/></svg><span class="badge">اسأل</span></button>
+      <a class="soc soc-fb" href="https://www.facebook.com/AlgaziraMadani" target="_blank" rel="noopener" data-i18n-aria="fb" aria-label="تابعنا على فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg><span class="badge" data-i18n="bFb">تابعنا</span></a>
+      <a class="soc soc-wa" href="https://wa.me/249127985731" target="_blank" rel="noopener" data-i18n-aria="wa" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" aria-hidden="true" fill="#fff"><path d="M16.02 3C9.4 3 4.04 8.36 4.04 14.97c0 2.11.55 4.17 1.6 5.99L4 28l7.2-1.89a11.9 11.9 0 0 0 4.82 1.01h.01c6.61 0 11.97-5.36 11.97-11.97C28 8.36 22.63 3 16.02 3zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.27 1.12 1.14-4.16-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.97 9.98-9.97 5.5 0 9.97 4.47 9.97 9.97s-4.47 9.97-9.65 9.97zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span class="badge" data-i18n="bWa">تواصل</span></a>
+      <button class="soc soc-ai" id="socAi" type="button" data-i18n-aria="ai" aria-label="اسأل مساعد دليلك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3z"/><path d="M18 14l.95 2.55L21.5 17.5l-2.55.95L18 21l-.95-2.55-2.55-.95 2.55-.95L18 14z"/><path d="M18.5 3l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6.6-1.6z"/></svg><span class="badge" data-i18n="bAi">اسأل</span></button>
     </div>
     <script>document.querySelectorAll(".wa-opt").forEach(function(a){a.href="https://wa.me/249127985731?text="+encodeURIComponent(a.getAttribute("data-msg"))});</script>
   </div>
@@ -592,7 +612,7 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
 
 <footer>
   <div class="wrap">
-    <p>© 2026 دليلك بود مدني<span class="sep">•</span><span class="rights">جميع الحقوق محفوظة</span></p>
+    <p data-i18n="foot">© 2026 دليلك بود مدني<span class="sep">•</span><span class="rights">جميع الحقوق محفوظة</span></p>
   </div>
 </footer>
 
@@ -615,21 +635,21 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
 })();
 </script>
 <!-- ============ chat assistant ============ -->
-<a class="fb-fab" href="https://www.facebook.com/AlgaziraMadani" target="_blank" rel="noopener" aria-label="تابعنا على فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg><span class="badge">تابعنا</span></a>
-<a class="wa-fab" href="https://wa.me/249127985731" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" aria-hidden="true" fill="#fff"><path d="M16.02 3C9.4 3 4.04 8.36 4.04 14.97c0 2.11.55 4.17 1.6 5.99L4 28l7.2-1.89a11.9 11.9 0 0 0 4.82 1.01h.01c6.61 0 11.97-5.36 11.97-11.97C28 8.36 22.63 3 16.02 3zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.27 1.12 1.14-4.16-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.97 9.98-9.97 5.5 0 9.97 4.47 9.97 9.97s-4.47 9.97-9.65 9.97zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span class="badge">تواصل</span></a>
-<button class="chat-fab" id="chatFab" type="button" aria-label="فتح مساعد دليلك" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3z"/><path d="M18 14l.95 2.55L21.5 17.5l-2.55.95L18 21l-.95-2.55-2.55-.95 2.55-.95L18 14z"/><path d="M18.5 3l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6.6-1.6z"/></svg><span class="badge">اسأل</span></button>
-<div class="chat-panel" id="chatPanel" role="dialog" aria-label="مساعد دليلك">
+<a class="fb-fab" href="https://www.facebook.com/AlgaziraMadani" target="_blank" rel="noopener" data-i18n-aria="fb" aria-label="تابعنا على فيسبوك"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H8v3h2.5V21h3z"/></svg><span class="badge" data-i18n="bFb">تابعنا</span></a>
+<a class="wa-fab" href="https://wa.me/249127985731" target="_blank" rel="noopener" data-i18n-aria="wa" aria-label="تواصل معنا عبر واتساب"><svg viewBox="0 0 32 32" aria-hidden="true" fill="#fff"><path d="M16.02 3C9.4 3 4.04 8.36 4.04 14.97c0 2.11.55 4.17 1.6 5.99L4 28l7.2-1.89a11.9 11.9 0 0 0 4.82 1.01h.01c6.61 0 11.97-5.36 11.97-11.97C28 8.36 22.63 3 16.02 3zm0 21.9h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-4.27 1.12 1.14-4.16-.24-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.5 4.47-9.97 9.98-9.97 5.5 0 9.97 4.47 9.97 9.97s-4.47 9.97-9.65 9.97zm5.47-7.47c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg><span class="badge" data-i18n="bWa">تواصل</span></a>
+<button class="chat-fab" id="chatFab" type="button" data-i18n-aria="chatOpen" aria-label="فتح مساعد دليلك" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3z"/><path d="M18 14l.95 2.55L21.5 17.5l-2.55.95L18 21l-.95-2.55-2.55-.95 2.55-.95L18 14z"/><path d="M18.5 3l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6.6-1.6z"/></svg><span class="badge" data-i18n="bAi">اسأل</span></button>
+<div class="chat-panel" id="chatPanel" role="dialog" data-i18n-aria="chatPanel" aria-label="مساعد دليلك">
   <div class="chat-head">
     <span class="av" aria-hidden="true">🤖</span>
-    <div class="tt"><b>مساعد دليلك</b><span>أجيب عن أسئلتك حول التطبيق فقط</span></div>
-    <button class="chat-close" id="chatClose" type="button" aria-label="إغلاق">✕</button>
+    <div class="tt" data-i18n="chatHead"><b>مساعد دليلك</b><span>أجيب عن أسئلتك حول التطبيق فقط</span></div>
+    <button class="chat-close" id="chatClose" type="button" data-i18n-aria="close" aria-label="إغلاق">✕</button>
   </div>
   <div class="chat-body" id="chatBody" aria-live="polite"></div>
   <form class="chat-form" id="chatForm" autocomplete="off">
-    <input class="chat-input" id="chatInput" type="text" maxlength="300" placeholder="اكتب سؤالك عن التطبيق…" aria-label="اكتب سؤالك">
-    <button class="chat-send" id="chatSend" type="submit" aria-label="إرسال">➤</button>
+    <input class="chat-input" id="chatInput" type="text" maxlength="300" data-i18n-ph="ph" data-i18n-aria="ask" placeholder="اكتب سؤالك عن التطبيق…" aria-label="اكتب سؤالك">
+    <button class="chat-send" id="chatSend" type="submit" data-i18n-aria="send" aria-label="إرسال">➤</button>
   </form>
-  <p class="chat-note">المساعد لا يحفظ بياناتك الشخصية. قد تحتوي الردود على أخطاء، وللتأكد تواصل معنا عبر واتساب.</p>
+  <p class="chat-note" data-i18n="chatNote">المساعد لا يحفظ بياناتك الشخصية. قد تحتوي الردود على أخطاء، وللتأكد تواصل معنا عبر واتساب.</p>
 </div>
 <script>
 (function(){
@@ -776,6 +796,59 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
       input=document.getElementById("chatInput"), send=document.getElementById("chatSend");
   var history=[], userCount=0, started=false, busy=false;
 
+  // ===== اللغة (عربي/إنجليزي) =====
+  function L(){return document.documentElement.getAttribute("lang")==="en"?"en":"ar"}
+  var CS={
+    ar:{welcome:"أهلًا بك 👋 أنا مساعد دليلك بود مدني. اختر سؤالًا من الأسفل أو اكتب سؤالك عن التطبيق.",
+        limit:"وصلت للحد الأقصى من الأسئلة في هذه الجلسة. للمزيد تواصل معنا عبر واتساب.",
+        noMatch:"لم أفهم ما كتبت، الرجاء توضيح سؤالك بصياغة أخرى. أنا أجيب عن تطبيق دليلك بود مدني فقط، ويمكنك اختيار أحد الأسئلة أدناه.",
+        typing:"جارٍ الكتابة…",
+        error:"تعذّر الرد الآن. جرّب مرة أخرى بعد قليل، أو اختر أحد الأسئلة أدناه، أو تواصل معنا عبر واتساب.",
+        wa:"💬 تواصل مع الدعم عبر واتساب"},
+    en:{welcome:"Welcome 👋 I'm the Dalilak Wad Madani assistant. Pick a question below or type your question about the app.",
+        limit:"You've reached the maximum number of questions for this session. For more, contact us on WhatsApp.",
+        noMatch:"I didn't quite understand that. I only answer questions about the Dalilak Wad Madani app — please rephrase, or pick a question below.",
+        typing:"Typing…",
+        error:"Couldn't reply right now. Please try again shortly, pick a question below, or contact us on WhatsApp.",
+        wa:"💬 Contact support on WhatsApp"}
+  };
+  function CT(k){return CS[L()][k]}
+  var FAQ_EN=[
+    {chip:1,q:"What is Dalilak Wad Madani?",k:["what is","about the app","tell me about","what does the app","dalilak"],
+     a:"Dalilak Wad Madani is a local app that helps you quickly find places, services and businesses in the city of Wad Madani, all in one place. It's useful for residents and visitors alike."},
+    {chip:1,q:"How do I download the app?",k:["download","get the app","where can i get"],
+     a:"Tap the “Download the App Now” button at the top of this page. The APK file will download to your Android device. Then follow the download and installation steps below the button."},
+    {k:["install","installation","set up"],q:"",
+     a:"After downloading, open the file from the notification or your Downloads folder. When Android shows a warning, tap “Settings” and allow installation from this source, then go back and tap “Install”, and open the app from your home screen."},
+    {chip:1,q:"What sections and services are available?",k:["sections","services","categories","what can i find","what's in","whats in","what is in"],
+     a:"The app includes sections for doctors and specialists, hospitals and clinics, pharmacies, restaurants and cafés, hotels and serviced apartments, delivery and rickshaws, grocery stores and supermarkets, plus shops, businesses and various other services."},
+    {chip:1,q:"Is the app safe?",k:["safe","security","virus","danger","harm","unknown source","trust","scam","privacy","permission","permissions","steal"],
+     a:"According to the app team, the trial version poses no risk to your phone, and your phone's system scans it automatically after download. It's just a guide for viewing information and doesn't ask you to log in. The “unknown source” warning appears only because the app isn't on Google Play yet."},
+    {chip:1,q:"How do I add my business?",k:["add my business","add business","register my","list my","my business","advertise","add my shop","add my restaurant"],
+     a:"Yes, business owners can register their business in the guide, and it's free. Contact us on WhatsApp, or in the app open the “More” menu and choose “Add your product or business”."},
+    {chip:1,q:"How can I contact the team?",k:["contact","whatsapp","support","reach you","talk to","phone number","email","facebook"],
+     a:"You can contact us on WhatsApp by tapping the WhatsApp button on this page — for questions, to register your business, or to report a problem. You can also follow our Facebook page."},
+    {k:["free","cost","price","pay","paid","charge","how much"],q:"",a:"Yes, the app is free — downloading and using it are completely free, and adding a business is free too."},
+    {k:["iphone","ios","apple","ipad","iphone version"],q:"",a:"The app is currently available for Android only. There is no iPhone version yet."},
+    {k:["google play","play store"],q:"",a:"The app is currently a trial version and isn't on Google Play yet, but we plan to publish it there later. That's why Android shows an “unknown source” warning — it's a normal Android measure."},
+    {k:["app size","file size","how big","megabyte","current version","which version","version number","what version"],q:"",a:"The current version is 1.0 and it's about 8 MB, available for Android devices."},
+    {k:["login","log in","sign in","account","personal data","personal information"],q:"",a:"No. The app doesn't ask you to log in or enter any personal data."},
+    {k:["doctor","doctors","pharmacy","hospital","clinic","restaurant","hotel","delivery","grocery","supermarket"],q:"",a:"Yes — the app has sections for doctors and specialists, hospitals and clinics, pharmacies, restaurants and cafés, hotels and serviced apartments, delivery, and grocery stores and supermarkets. Open a section to see each business's details and contact info."}
+  ];
+  function findLocalEn(text){
+    var t=String(text).toLowerCase().replace(/[^a-z0-9' ]+/g," ").replace(/\s+/g," ").trim();
+    if(!t) return null;
+    if(/^(hi|hello|hey|good morning|good evening|salam|assalam)\b/.test(t)&&t.split(" ").length<=4) return "Hello! How can I help you with the Dalilak Wad Madani app?";
+    if(/^(thanks|thank you|thx)\b/.test(t)&&t.split(" ").length<=4) return "You're welcome! Let me know if you have another question about the app.";
+    var words=t.split(" "),best=null,bl=0;
+    FAQ_EN.forEach(function(f){f.k.forEach(function(k){
+      var hit=k.length>4?(" "+t+" ").indexOf(" "+k)!==-1:words.indexOf(k)!==-1;
+      if(hit&&k.length>bl){bl=k.length;best=f}
+    })});
+    return best?best.a:null;
+  }
+  window.__chatReset=function(){ if(body){body.innerHTML=""} started=false; history=[]; busy=false; if(send) send.disabled=false; };
+
   function scroll(){body.scrollTop=body.scrollHeight}
   function addMsg(text,who){
     var d=document.createElement("div"); d.className="msg "+who; d.textContent=text;
@@ -783,12 +856,12 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
   }
   function addWA(){
     var a=document.createElement("a"); a.className="chat-wa"; a.href=WA; a.target="_blank"; a.rel="noopener";
-    a.textContent="💬 تواصل مع الدعم عبر واتساب"; body.appendChild(a); scroll();
+    a.textContent=CT("wa"); body.appendChild(a); scroll();
   }
   function addChips(){
     var old=body.querySelector(".chat-chips"); if(old) old.remove();
     var w=document.createElement("div"); w.className="chat-chips";
-    FAQ.filter(function(f){return f.chip}).forEach(function(f){
+    (L()==="en"?FAQ_EN:FAQ).filter(function(f){return f.chip}).forEach(function(f){
       var b=document.createElement("button"); b.type="button"; b.className="chat-chip"; b.textContent=f.q;
       b.addEventListener("click",function(){ask(f.q,f.a)});
       w.appendChild(b);
@@ -801,7 +874,7 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
     panel.classList.add("open"); fab.setAttribute("aria-expanded","true"); document.documentElement.classList.add("chat-lock");
     if(!started){
       started=true;
-      addMsg("أهلًا بك 👋 أنا مساعد دليلك بود مدني. اختر سؤالًا من الأسفل أو اكتب سؤالك عن التطبيق.","bot");
+      addMsg(CT("welcome"),"bot");
       addChips();
     }
     if(fine) setTimeout(function(){input.focus()},50);
@@ -812,7 +885,7 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&panel.classList.contains("open"))close()});
 
   function limitReached(){
-    addMsg("وصلت للحد الأقصى من الأسئلة في هذه الجلسة. للمزيد تواصل معنا عبر واتساب.","bot"); addWA();
+    addMsg(CT("limit"),"bot"); addWA();
   }
   function ask(q,localAnswer){
     if(busy) return;
@@ -823,12 +896,12 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
       addMsg(localAnswer,"bot"); history.push({role:"assistant",content:localAnswer}); addChips(); showFrom(uEl); return;
     }
     if(!AI_ENDPOINT){
-      addMsg("لم أفهم ما كتبت، الرجاء توضيح سؤالك بصياغة أخرى. أنا أجيب عن تطبيق دليلك بود مدني فقط، ويمكنك اختيار أحد الأسئلة أدناه.","bot"); addChips(); showFrom(uEl); return;
+      addMsg(CT("noMatch"),"bot"); addChips(); showFrom(uEl); return;
     }
     if(userCount>=MAX_USER_MSGS){limitReached();return}
     userCount++;
     busy=true; send.disabled=true;
-    var t=addMsg("جارٍ الكتابة…","bot typing");
+    var t=addMsg(CT("typing"),"bot typing");
     var ctrl=new AbortController(), to=setTimeout(function(){ctrl.abort()},20000);
     fetch(AI_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},signal:ctrl.signal,
       body:JSON.stringify({messages:history.slice(-6)})})
@@ -840,7 +913,7 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
     })
     .catch(function(err){
       try{console.warn("chat error:",err&&err.message)}catch(_){}
-      t.className="msg bot"; t.textContent="تعذّر الرد الآن. جرّب مرة أخرى بعد قليل، أو اختر أحد الأسئلة أدناه، أو تواصل معنا عبر واتساب."; addWA();
+      t.className="msg bot"; t.textContent=CT("error"); addWA();
       history.pop();
     })
     .finally(function(){clearTimeout(to); busy=false; send.disabled=false; addChips(); showFrom(uEl); if(fine) input.focus()});
@@ -849,7 +922,7 @@ html.chat-lock,html.chat-lock body{overflow:hidden}
     e.preventDefault();
     var q=input.value.trim(); if(!q) return;
     if(busy) return; // لا نمسح النص أثناء انتظار الرد السابق
-    input.value=""; ask(q,findLocal(q));
+    input.value=""; ask(q,L()==="en"?findLocalEn(q):findLocal(q));
   });
 })();
 </script>
@@ -859,6 +932,80 @@ document.getElementById("socAi").addEventListener("click",function(){
   var f=document.getElementById("chatFab"),p=document.getElementById("chatPanel");
   if(f&&p&&!p.classList.contains("open")) f.click();
 });
+</script>
+
+<script>
+(function(){
+  var EN={
+    title:"Dalilak Wad Madani — Download the App",
+    desc:"Download the Dalilak Wad Madani app: restaurants, hotels, doctors, pharmacies and hospitals in Wad Madani, all in one app.",
+    hdr:"Dalilak Wad Madani Guide", hdrsub:"Wad Madani's places and services in one place.",
+    banner:"Dalilak, the complete local guide to Wad Madani: restaurants, hotels, doctors, shops and services in one app",
+    h1:"Tap the Download Now button",
+    cta:"📲 Download the App Now",
+    meta:"APK file · For Android devices · Version 1.0 · Size: 8 MB",
+    hint1:"A warning may appear during installation — ", hint2:"Find out why ↓",
+    stepsTitle:"Download & Installation Steps",
+    s1:'Tap the <b>"Download the App Now"</b> button at the top of the page.',
+    s2:'The <b>APK</b> file will start downloading automatically to your device, and you will get a notification when it finishes.',
+    s3:'Open the file from the notification or from your Downloads folder.',
+    s4:'Android will ask you to allow installation from this source — tap <b>"Settings"</b>, enable the option, then go back to continue the installation.',
+    s5:'Tap <b>"Install"</b> and wait a few moments until it finishes.',
+    s6:'Open the app from your home screen and start using it.',
+    nTitle:"Important Note",
+    nLead:'Why does an "Unknown source" warning appear?',
+    nP1:"The app is not currently published on Google Play, so Android automatically shows this warning for any app installed from outside the official store. This is a default system measure and does not indicate any problem with the app.",
+    nP2:"Simply allow installation from this source when the warning appears, and the installation will complete normally.",
+    sLead:"🛡️ Rest assured, the app is simple and safe",
+    sf1:"<b>No login required:</b> it never asks you to create an account or enter any personal data.",
+    sf2:"<b>A guide for viewing only:</b> it shows you information and services in Wad Madani, nothing more.",
+    sf3:"<b>Won't harm your device:</b> it causes no problems for your phone and puts you at no risk.",
+    supLead:"<b>Our support team is here for you</b><br>If you run into any problem with downloading or installing, or have a suggestion about the app, tap the button and we'll get back to you as soon as possible.",
+    o1:"Download or installation problem", o2:"Suggestion or feedback", go:"Tap here ▸",
+    or:"Or contact us directly",
+    bFb:"Follow", bWa:"Contact", bAi:"Ask",
+    fb:"Follow us on Facebook", wa:"Contact us on WhatsApp", ai:"Ask the Dalilak assistant",
+    noteClose:"Close note",
+    foot:'© 2026 Dalilak Wad Madani<span class="sep">•</span><span class="rights">All rights reserved</span>',
+    chatOpen:"Open Dalilak assistant", chatPanel:"Dalilak assistant",
+    chatHead:"<b>Dalilak Assistant</b><span>I only answer questions about the app</span>",
+    close:"Close", ph:"Type your question about the app…", ask:"Type your question", send:"Send",
+    chatNote:"The assistant doesn't store your personal data. Replies may contain mistakes — for confirmation, contact us on WhatsApp.",
+    m1:"Hello, I'm having trouble downloading/installing the Dalilak Wad Madani app and need help.",
+    m2:"Hello, I have a suggestion/feedback to improve the Dalilak Wad Madani app.",
+    langBtn:"Translate the page to Arabic", langTxt:"العربية"
+  };
+  var AR={}, root=document.documentElement;
+  var q=function(sel){return Array.prototype.slice.call(document.querySelectorAll(sel))};
+  // التقاط النص العربي الأصلي من الصفحة نفسها
+  q("[data-i18n]").forEach(function(e){AR[e.getAttribute("data-i18n")]=e.innerHTML});
+  q("[data-i18n-aria]").forEach(function(e){AR[e.getAttribute("data-i18n-aria")]=e.getAttribute("aria-label")});
+  q("[data-i18n-alt]").forEach(function(e){AR[e.getAttribute("data-i18n-alt")]=e.getAttribute("alt")});
+  q("[data-i18n-ph]").forEach(function(e){AR[e.getAttribute("data-i18n-ph")]=e.getAttribute("placeholder")});
+  AR.title=document.title;
+  var metaD=document.querySelector('meta[name="description"]'); AR.desc=metaD?metaD.getAttribute("content"):"";
+  var waOpts=q(".wa-opt"); AR.m1=waOpts[0]?waOpts[0].getAttribute("data-msg"):""; AR.m2=waOpts[1]?waOpts[1].getAttribute("data-msg"):"";
+  AR.langBtn="Translate the page to English"; AR.langTxt="English";
+
+  function apply(lang){
+    var D=lang==="en"?EN:AR;
+    root.setAttribute("lang",lang); root.setAttribute("dir",lang==="en"?"ltr":"rtl");
+    q("[data-i18n]").forEach(function(e){var k=e.getAttribute("data-i18n"); if(D[k]!=null) e.innerHTML=D[k]});
+    q("[data-i18n-aria]").forEach(function(e){var k=e.getAttribute("data-i18n-aria"); if(D[k]!=null) e.setAttribute("aria-label",D[k])});
+    q("[data-i18n-alt]").forEach(function(e){var k=e.getAttribute("data-i18n-alt"); if(D[k]!=null) e.setAttribute("alt",D[k])});
+    q("[data-i18n-ph]").forEach(function(e){var k=e.getAttribute("data-i18n-ph"); if(D[k]!=null) e.setAttribute("placeholder",D[k])});
+    document.title=D.title; if(metaD) metaD.setAttribute("content",D.desc);
+    [D.m1,D.m2].forEach(function(m,i){ var a=waOpts[i]; if(!a) return; a.setAttribute("data-msg",m); a.href="https://wa.me/249127985731?text="+encodeURIComponent(m) });
+    var b=document.getElementById("langBtn"); b.setAttribute("aria-label",D.langBtn); document.getElementById("langTxt").textContent=D.langTxt;
+    if(window.__chatReset) window.__chatReset();
+    try{localStorage.setItem("dalilak_lang",lang)}catch(_){}
+  }
+  document.getElementById("langBtn").addEventListener("click",function(){
+    apply(root.getAttribute("lang")==="en"?"ar":"en");
+  });
+  var saved=null; try{saved=localStorage.getItem("dalilak_lang")}catch(_){}
+  if(saved==="en") apply("en");
+})();
 </script>
 </body>
 </html>
