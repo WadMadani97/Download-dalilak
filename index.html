@@ -490,6 +490,20 @@ footer p{font-size:clamp(.76rem,3.2vw,.88rem)}
   box-shadow:0 8px 22px rgba(0,0,0,.30),0 2px 0 rgba(201,138,43,.35);
 }
 
+/* مساعد دليلك: يفتح كصفحة كاملة */
+html.chat-lock,html.chat-lock body{overflow:hidden}
+.chat-panel{left:0;right:0;top:0;bottom:0;width:100%;height:100dvh;max-height:none;border:0;border-radius:0;z-index:100}
+.chat-body{position:relative}
+.chat-head{padding-top:calc(12px + env(safe-area-inset-top,0px));padding-inline:max(16px,calc((100% - 760px)/2))}
+.chat-body{padding-inline:max(14px,calc((100% - 760px)/2 + 14px))}
+.chat-form{padding-inline:max(10px,calc((100% - 760px)/2 + 10px))}
+.chat-note{padding-inline:max(10px,calc((100% - 760px)/2 + 10px));padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+.chat-close{width:38px;height:38px;font-size:1.05rem}
+.msg{font-size:.95rem}
+.chat-chip{font-size:.85rem;padding:8px 14px}
+.chat-input{font-size:1rem}
+@media (min-width:768px){.msg{font-size:1rem;max-width:80%}}
+
 /* ============ motion ============ */
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
@@ -698,18 +712,20 @@ footer p{font-size:clamp(.76rem,3.2vw,.88rem)}
       b.addEventListener("click",function(){ask(f.q,f.a)});
       w.appendChild(b);
     });
-    body.appendChild(w); scroll();
+    body.appendChild(w);
   }
+  function showFrom(el){ body.scrollTop=Math.max(0,el.offsetTop-10); }
+  var fine=window.matchMedia&&window.matchMedia("(pointer:fine)").matches;
   function open(){
-    panel.classList.add("open"); fab.setAttribute("aria-expanded","true");
+    panel.classList.add("open"); fab.setAttribute("aria-expanded","true"); document.documentElement.classList.add("chat-lock");
     if(!started){
       started=true;
       addMsg("أهلًا بك 👋 أنا مساعد دليلك بود مدني. اختر سؤالًا من الأسفل أو اكتب سؤالك عن التطبيق.","bot");
       addChips();
     }
-    setTimeout(function(){input.focus()},50);
+    if(fine) setTimeout(function(){input.focus()},50);
   }
-  function close(){panel.classList.remove("open"); fab.setAttribute("aria-expanded","false"); fab.focus()}
+  function close(){panel.classList.remove("open"); fab.setAttribute("aria-expanded","false"); document.documentElement.classList.remove("chat-lock"); fab.focus()}
   fab.addEventListener("click",function(){panel.classList.contains("open")?close():open()});
   document.getElementById("chatClose").addEventListener("click",close);
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&panel.classList.contains("open"))close()});
@@ -720,14 +736,14 @@ footer p{font-size:clamp(.76rem,3.2vw,.88rem)}
   function ask(q,localAnswer){
     if(busy) return;
     if(userCount>=MAX_USER_MSGS){limitReached();return}
-    userCount++; addMsg(q,"user");
+    userCount++; var uEl=addMsg(q,"user");
     var chips=body.querySelector(".chat-chips"); if(chips) chips.remove();
     history.push({role:"user",content:q});
     if(localAnswer){
-      addMsg(localAnswer,"bot"); history.push({role:"assistant",content:localAnswer}); addChips(); return;
+      addMsg(localAnswer,"bot"); history.push({role:"assistant",content:localAnswer}); addChips(); showFrom(uEl); return;
     }
     if(!AI_ENDPOINT){
-      addMsg("لا أملك إجابة جاهزة لهذا السؤال. اختر أحد الأسئلة أدناه أو تواصل معنا عبر واتساب وسنساعدك.","bot"); addWA(); addChips(); return;
+      addMsg("لا أملك إجابة جاهزة لهذا السؤال. اختر أحد الأسئلة أدناه أو تواصل معنا عبر واتساب وسنساعدك.","bot"); addWA(); addChips(); showFrom(uEl); return;
     }
     busy=true; send.disabled=true;
     var t=addMsg("جارٍ الكتابة…","bot typing");
@@ -744,7 +760,7 @@ footer p{font-size:clamp(.76rem,3.2vw,.88rem)}
       t.className="msg bot"; t.textContent="تعذّر الرد الآن. جرّب مرة أخرى أو تواصل معنا عبر واتساب."; addWA();
       history.pop();
     })
-    .finally(function(){clearTimeout(to); busy=false; send.disabled=false; addChips(); input.focus()});
+    .finally(function(){clearTimeout(to); busy=false; send.disabled=false; addChips(); showFrom(uEl); if(fine) input.focus()});
   }
   form.addEventListener("submit",function(e){
     e.preventDefault();
